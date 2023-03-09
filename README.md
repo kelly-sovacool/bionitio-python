@@ -1,4 +1,7 @@
-[![travis](https://travis-ci.org/bionitio-team/bionitio-python.svg?branch=master)](https://travis-ci.org/bionitio-team/bionitio-python)
+
+# bionitio-python
+
+I imported this repo from [bionitio](https://github.com/bionitio-team/bionitio-python) and modified it for [teaching](https://github.com/kelly-sovacool/BIOINF576-ci). Below is the original README from the bionitio team.
 
 # Overview 
 
