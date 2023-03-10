@@ -22,4 +22,4 @@ jobs:
       - name: List
         run: |
             echo "listing files in the bioinitio directory"
-            ls bioinitio
+            ls bionitio
