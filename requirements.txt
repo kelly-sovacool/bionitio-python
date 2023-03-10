@@ -1,5 +1,2 @@
-# Dependencies, with versions explicitly declared for development and testing
+numpy
 biopython==1.66
-# Packages that are not dependencies but used for building or testing
-flake8
-pytest
