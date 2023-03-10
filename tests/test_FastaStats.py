@@ -1,20 +1,16 @@
 '''
-Unit tests for bionitio.
-
-Usage: python -m unittest -v bionitio_test
+Unit tests for bionitio FastaStats
 '''
 
-import unittest
 from io import StringIO
-#pylint: disable=no-name-in-module
-from bionitio import FastaStats
+from bionitio.main import FastaStats
 
-class TestFastaStats(unittest.TestCase):
+class TestFastaStats:
     '''Unit tests for FastaStats'''
     def do_test(self, input_str, minlen, expected):
         "Wrapper function for testing FastaStats"
         result = FastaStats().from_file(StringIO(input_str), minlen)
-        self.assertEqual(expected, result)
+        assert expected == result
 
     def test_zero_byte_input(self):
         "Test input containing zero bytes"
@@ -97,6 +93,3 @@ class TestFastaStats(unittest.TestCase):
                               average=None)
         self.do_test(">header1\nATGC\nAGG\n>header2\nTT\n", 8, expected)
 
-
-if __name__ == '__main__':
-    unittest.main()
