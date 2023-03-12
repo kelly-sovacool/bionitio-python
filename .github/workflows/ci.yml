@@ -45,3 +45,5 @@ jobs:
         git add bionitio/                  # and change your package path here
         git commit -m "🎨 Style code" || echo "No changes to commit"
         git push
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
