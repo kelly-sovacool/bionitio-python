@@ -10,7 +10,7 @@ on:
       - main
       - master
 
-env:    # configure environment variables for git commits
+env:
   actor: "41898282+github-actions[bot]"
 
 jobs:
@@ -29,20 +29,20 @@ jobs:
         if [ -f requirements.txt ]; then 
             pip install -r requirements.txt
         fi
-    - name: Configure git  # use the environment variable we set above
+    - name: Configure git
       run: |
         git config --local user.email "${actor}@users.noreply.github.com"
         git config --local user.name "$actor"
     - name: Test
       run: |
         pytest .
-    - name: Format & tint
+    - name: Format & lint
       run: |
-        black .  # first run black
-        flake8 --extend-ignore E203 --max-line-length 88 .  # then run flake8
+        black .
+        flake8 --extend-ignore E203 --max-line-length 88 .
     - name: Commit and push changes
       run: |
-        git add bionitio/                  # and change your package path here
+        git add .
         git commit -m "🎨 Style code" || echo "No changes to commit"
         git push
     - name: Upload coverage reports to Codecov
