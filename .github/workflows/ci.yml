@@ -12,8 +12,6 @@ on:
 
 env:    # configure environment variables for git commits
   actor: "41898282+github-actions[bot]"
-  token: ${{ secrets.GITHUB_TOKEN }}
-  repo: ${{ github.repository }}
 
 jobs:
   build:
@@ -31,6 +29,10 @@ jobs:
         if [ -f requirements.txt ]; then 
             pip install -r requirements.txt
         fi
+    - name: Configure git  # use the environment variable we set above
+      run: |
+        git config --local user.email "${actor}@users.noreply.github.com"
+        git config --local user.name "$actor"
     - name: Test
       run: |
         pytest .
@@ -39,7 +41,7 @@ jobs:
         black .  # first run black
         flake8 --extend-ignore E203 --max-line-length 88 .  # then run flake8
     - name: Commit and push changes
-    run: |
+      run: |
         git add bionitio/                  # and change your package path here
         git commit -m "🎨 Style code" || echo "No changes to commit"
         git push
