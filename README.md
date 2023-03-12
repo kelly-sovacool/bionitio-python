@@ -2,6 +2,7 @@
 # bionitio-python
 
 [![ci](https://github.com/kelly-sovacool/bionitio-python/actions/workflows/ci.yml/badge.svg)](https://github.com/kelly-sovacool/bionitio-python/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/kelly-sovacool/bionitio-python/branch/main/graph/badge.svg?token=0COhziXR0s)](https://codecov.io/gh/kelly-sovacool/bionitio-python)
 
 I imported this repo from [bionitio](https://github.com/bionitio-team/bionitio-python) and modified it for [teaching](https://github.com/kelly-sovacool/BIOINF576-ci). Below is the original README from the bionitio team.
 
