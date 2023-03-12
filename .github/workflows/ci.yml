@@ -25,8 +25,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest black flake8   # also install black & flake8
-        if [ -f requirements.txt ]; then 
+        pip install pytest pytest-cov black flake8 # add pytest-cov plugin
+        if [ -f requirements.txt ]; then
             pip install -r requirements.txt
         fi
     - name: Configure git
@@ -35,15 +35,15 @@ jobs:
         git config --local user.name "$actor"
     - name: Test
       run: |
-        pytest .
+        pytest --cov=bionitio tests/ # specify your package & test paths
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
     - name: Format & lint
       run: |
-        black .
+        black . # first run black, then run flake8
         flake8 --extend-ignore E203 --max-line-length 88 .
     - name: Commit and push changes
       run: |
         git add .
         git commit -m "🎨 Style code" || echo "No changes to commit"
         git push
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
